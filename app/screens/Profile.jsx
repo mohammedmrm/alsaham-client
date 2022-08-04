@@ -1,0 +1,93 @@
+import React from "react";
+import { StyleSheet, View, FlatList } from "react-native";
+
+import { ListItem, ListItemSeparator } from "../components/lists";
+import colors from "../config/colors";
+import Icon from "../components/Icon";
+import routes from "../Routes";
+import Screen from "../components/Screen";
+import useAuth from "../auth/useAuth";
+import { useNavigation } from "@react-navigation/native";
+
+const menuItems = [
+  {
+    title: "أشعاراتي",
+    icon: {
+      name: "bell",
+      backgroundColor: colors.primary,
+    },
+    targetScreen: routes.NOTIFICATION,
+  },
+  {
+    title: "محادثاتي",
+    icon: {
+      name: "chat",
+      backgroundColor: colors.secondary,
+    },
+    targetScreen: routes.CHAT,
+  },
+  {
+    title: "مفضلاتي",
+    icon: {
+      name: "star",
+      backgroundColor: colors.secondary,
+    },
+    targetScreen: routes.CHAT,
+  },
+];
+
+function AccountScreen({ navigation }) {
+  const { user, logOut } = useAuth();
+  return (
+    <Screen>
+      <View style={styles.container}>
+        <ListItem
+          title={user.data.name}
+          subTitle={user.data.phone}
+          image={require("../assets/avatar/man.jpg")}
+          onPress={() => navigation.navigate(routes.CHAT)}
+        />
+      </View>
+      <View style={styles.container}>
+        <FlatList
+          data={menuItems}
+          keyExtractor={(menuItem) => menuItem.title}
+          ItemSeparatorComponent={ListItemSeparator}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={colors.light4}
+                  size={50}
+                  iconColor={colors.primery}
+                />
+              }
+              onPress={() => navigation.navigate(item.targetScreen)}
+            />
+          )}
+        />
+      </View>
+      <ListItem
+        title="تسجيل خروج"
+        IconComponent={
+          <Icon name="login" iconColor={colors.primery} size={50} />
+        }
+        onPress={() => logOut()}
+      />
+    </Screen>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: colors.light,
+  },
+  container: {
+    marginVertical: 20,
+    width: "100%",
+  },
+});
+
+export default AccountScreen;
