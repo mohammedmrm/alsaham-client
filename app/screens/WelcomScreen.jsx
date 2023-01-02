@@ -11,7 +11,7 @@ export default function WelcomeScreen() {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      blurRadius={4}
+      blurRadius={10}
       style={styles.background}
       source={require("../assets/background/welcomePage.jpg")}
     >
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 120,
-    height: 120,
+    width: 180,
+    height: 180,
     borderRadius: 10,
   },
 });

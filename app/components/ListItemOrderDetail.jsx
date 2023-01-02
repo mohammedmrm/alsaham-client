@@ -27,7 +27,9 @@ const ListItemOrderDetail = ({ caption, details, onPress = false }) => {
             {details}
           </Text>
         ) : (
-          <Text style={styles.text}>{numberWithCommas(details)}</Text>
+          <Text style={styles.text}>
+            {details && numberWithCommas(details)}
+          </Text>
         )}
       </View>
     </View>

@@ -1,6 +1,8 @@
 import { useRoute } from "@react-navigation/native";
 import React from "react";
 import WebView from "react-native-webview";
+import settings from "../config/settings";
+import { Platform } from "react-native";
 const PdfViewerScreen = () => {
   const route = useRoute();
   return (
@@ -12,8 +14,9 @@ const PdfViewerScreen = () => {
       style={{ flex: 1 }}
       source={{
         uri:
-          "https://docs.google.com/gview?embedded=true&url=https://alzaimexpress.com/dash/invoice/" +
-          route?.params.item.path,
+          Platform.OS == "ios"
+            ? `${settings.apiUrl}/../../dash/invoice/${route?.params.item.path}`
+            : `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/invoice/${route?.params.item.path}`,
       }}
     />
   );

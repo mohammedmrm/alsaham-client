@@ -31,7 +31,6 @@ const OrderDetails = () => {
     const results = await getOrder?.getOrder(token, id, notificatin_id);
     setOrder(results?.data?.data[0] || {});
     setIsLoading(false);
-    console.log(results);
   };
   useEffect(() => {
     loadDetails(user?.token, route?.params?.id, route?.params?.notify_id);
@@ -51,7 +50,7 @@ const OrderDetails = () => {
       case "9":
         return colors.returned;
       case "13":
-        return colors.gray;
+        return colors.resend;
       default:
         return colors.medium;
     }
@@ -163,15 +162,16 @@ const OrderDetails = () => {
               </View>
             </TouchableWithoutFeedback>
             <ScrollView>
-              {order?.tracking.map((item) => (
-                <TrackingBox
-                  key={`${item.order_status_id}${
-                    Date.now() + Math.random()
-                  }`.toString()}
-                  bgColor={handelColor(item.order_status_id)}
-                  item={item}
-                />
-              ))}
+              {order?.tracking &&
+                order?.tracking.map((item) => (
+                  <TrackingBox
+                    key={`${item.order_status_id}${
+                      Date.now() + Math.random()
+                    }`.toString()}
+                    bgColor={handelColor(item.order_status_id)}
+                    item={item}
+                  />
+                ))}
             </ScrollView>
           </View>
         ) : (

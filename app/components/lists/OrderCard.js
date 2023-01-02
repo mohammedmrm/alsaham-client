@@ -24,7 +24,7 @@ class OrderCard extends PureComponent {
       case "9":
         return colors.returned;
       case "13":
-        return colors.gray;
+        return colors.resend;
       default:
         return colors.medium;
     }
@@ -139,7 +139,7 @@ class OrderCard extends PureComponent {
               <Icon
                 backgroundColor={"#00000000"}
                 iconColor={this.handelColor(this.props.item?.order_status_id)}
-                name="phone-message-outline"
+                name="phone-in-talk"
                 size={55}
               />
             </TouchableHighlight>

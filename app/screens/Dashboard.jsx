@@ -113,7 +113,6 @@ const Dashboard = () => {
           alignItems: "center",
           flexDirection: "row-reverse",
           backgroundColor: colors.white,
-          width: "100%",
         }}
       >
         <Headline
@@ -185,21 +184,22 @@ const Dashboard = () => {
             style={{
               width: "90%",
               height: 45,
-              backgroundColor: "#c8e6c9",
+              backgroundColor: "#fac8e3",
               alignSelf: "center",
               margin: 10,
-              borderRadius: borderRadiuss.Radius_larg,
+              borderRadius: 5,
               alignItems: "center",
               justifyContent: "center",
-              flexDirection: "row-reverse",
+              flexDirection: "row",
+              elevation: 5,
             }}
           >
-            <Feather name="phone-call" size={20} color={"#388e3c"} />
+            <Feather name="phone-call" size={20} color={"#a30057"} />
             <Title
               style={{
                 alignSelf: "center",
                 paddingHorizontal: 8,
-                color: "#388e3c",
+                color: "#a30057",
                 fontFamily: "Tjw_xblod",
                 fontSize: 14,
               }}

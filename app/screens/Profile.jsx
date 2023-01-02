@@ -7,6 +7,7 @@ import Icon from "../components/Icon";
 import routes from "../Routes";
 import Screen from "../components/Screen";
 import useAuth from "../auth/useAuth";
+import Routes from "../Routes";
 import { useNavigation } from "@react-navigation/native";
 
 const menuItems = [
@@ -38,8 +39,14 @@ const menuItems = [
 
 function AccountScreen({ navigation }) {
   const { user, logOut } = useAuth();
+  const navigator = useNavigation();
+  const config = {
+    velocityThreshold: 0.3,
+    directionalOffsetThreshold: 80,
+  };
+
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
           title={user.data.name}
@@ -72,7 +79,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="تسجيل خروج"
         IconComponent={
-          <Icon name="login" iconColor={colors.primery} size={50} />
+          <Icon name="logout" iconColor={colors.primery} size={50} />
         }
         onPress={() => logOut()}
       />
@@ -86,7 +93,6 @@ const styles = StyleSheet.create({
   },
   container: {
     marginVertical: 20,
-    width: "100%",
   },
 });
 
