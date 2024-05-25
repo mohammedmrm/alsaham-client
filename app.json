@@ -2,7 +2,7 @@
   "expo": {
     "name": "السهم الدقيق - العميل",
     "slug": "alsahamClient",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -33,7 +33,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.alsaham.client",
-      "buildNumber": "1.0.3"
+      "buildNumber": "1.0.4"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -41,9 +41,8 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "useNextNotificationsApi": true,
       "package": "com.alsaham.client",
-      "versionCode": 5
+      "versionCode": 6
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -53,6 +52,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9cad7882-ce0a-4794-87f2-d42aa5b18687"
+      }
     }
   }
 }
