@@ -1,48 +1,46 @@
-import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
-  View,
-  FlatList,
-  StyleSheet,
-  Linking,
-  Animated,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
-import {
+  Button,
+  Card,
+  Modal,
   Select,
   SelectItem,
-  Modal,
-  Card,
-  Button,
-  Text,
   Spinner,
+  Text,
 } from "@ui-kitten/components";
-import { useNavigation } from "@react-navigation/native";
-import BottomSheet from "reanimated-bottom-sheet";
+import React, { useEffect, useState } from "react";
+import {
+  Animated,
+  Dimensions,
+  FlatList,
+  Linking,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Searchbar } from "react-native-paper";
 import cache from "../utility/cache";
 
+import Routes from "../Routes";
+import getCities from "../api/getCities";
+import getOrders from "../api/getOrders";
+import getStatues from "../api/getStatues";
+import getStores from "../api/getStores";
+import useAuth from "../auth/useAuth";
 import {
-  OrderCard,
   ListItemSeparator,
+  OrderCard,
+  OrderSheet,
   QuckViewDetails,
   QuckViewDetails2,
-  OrderSheet,
 } from "../components/lists";
-import ActivityIndecatorLoadingList from "./../components/ActivtyIndectors/ActivityIndecatorLoadingList";
-import { handleCopy } from "../utility/helper";
-import Screen from "./../components/Screen";
-import getStatues from "../api/getStatues";
-import getCities from "../api/getCities";
-import getStores from "../api/getStores";
-import getOrders from "../api/getOrders";
-import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
-import Routes from "../Routes";
-import { I18nManager } from "react-native";
+import { handleCopy } from "../utility/helper";
+import ActivityIndecatorLoadingList from "./../components/ActivtyIndectors/ActivityIndecatorLoadingList";
+import Screen from "./../components/Screen";
 
 //-------------------------------------------------------------------------
-function Dashboard() {
+function SearchResults() {
   let { user } = useAuth();
   const navigator = useNavigation();
   const [order, setOrder] = useState(null);
@@ -448,20 +446,6 @@ function Dashboard() {
         </Card>
       </Modal>
       {state.isOpen && renderBackDrop()}
-
-      <BottomSheet
-        ref={bs}
-        snapPoints={[
-          "-10%",
-          window.height * 0.4,
-          window.height * 0.6,
-          window.height * 0.8,
-        ]}
-        initialSnap={0}
-        renderContent={renderInner}
-        renderHeader={renderHeader}
-        onCloseEnd={onClose}
-      />
     </Screen>
   );
 }
@@ -470,4 +454,4 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
 });
-export default Dashboard;
+export default SearchResults;

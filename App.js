@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import * as eva from "@eva-design/eva";
 import { NavigationContainer } from "@react-navigation/native";
+import { ApplicationProvider } from "@ui-kitten/components";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
-import * as eva from "@eva-design/eva";
-import { ApplicationProvider } from "@ui-kitten/components";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useState } from "react";
 import "react-native-gesture-handler";
-import navigationTheme from "./app/navigations/NavigationTheme";
-import AppNavigator from "./app/navigations/AppNavigation";
-import AuthNavigator from "./app/navigations/AuthNavigator";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import OfflineNotice from "./app/components/OfflineNotice";
-import * as SplashScreen from "expo-splash-screen";
+import AppNavigator from "./app/navigations/AppNavigation";
+import AuthNavigator from "./app/navigations/AuthNavigator";
+import navigationTheme from "./app/navigations/NavigationTheme";
 import { navigationRef } from "./app/navigations/rootNavigation";
 
 export default function App() {
@@ -50,19 +51,21 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        {user ? (
-          user.token ? (
-            <ApplicationProvider {...eva} theme={eva.light}>
-              <AppNavigator />
-            </ApplicationProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer ref={navigationRef} theme={navigationTheme}>
+          {user ? (
+            user.token ? (
+              <ApplicationProvider {...eva} theme={eva.light}>
+                <AppNavigator />
+              </ApplicationProvider>
+            ) : (
+              <AuthNavigator />
+            )
           ) : (
             <AuthNavigator />
-          )
-        ) : (
-          <AuthNavigator />
-        )}
-      </NavigationContainer>
+          )}
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </AuthContext.Provider>
   );
 }

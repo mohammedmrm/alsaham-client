@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "السهم الدقيق - العميل",
-    "slug": "alsahamClient",
+    "name": "كناري - العميل",
+    "slug": "KnariClient",
     "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -32,7 +32,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alsaham.client",
+      "bundleIdentifier": "com.knari.client",
       "buildNumber": "1.0.4"
     },
     "android": {
@@ -41,7 +41,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alsaham.client",
+      "package": "com.knari.client",
       "versionCode": 6
     },
     "web": {
@@ -55,7 +55,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "9cad7882-ce0a-4794-87f2-d42aa5b18687"
+        "projectId": "b65bd28a-6adf-481f-8f7a-212570ab71b8"
       }
     }
   }
