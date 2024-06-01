@@ -1,17 +1,17 @@
 import Constants from "expo-constants";
 const settings = {
   dev: {
-    apiUrl: "http://alsahamexpress.com/client/api",
+    apiUrl: "https://alsanjariexpress.com/client/api",
     logo: require("../assets/logo/logo.jpg"),
     companyName: "السهم الدقيق",
   },
   staging: {
-    apiUrl: "http://alsahamexpress.com/client/api",
+    apiUrl: "https://alsanjariexpress.com/client/api",
     logo: require("../assets/logo/logo.jpg"),
     companyName: "السهم الدقيق",
   },
   prod: {
-    apiUrl: "http://alsahamexpress.com/client/api",
+    apiUrl: "https://alsanjariexpress.com/client/api",
     logo: require("../assets/logo/logo.jpg"),
     companyName: "السهم الدقيق",
   },

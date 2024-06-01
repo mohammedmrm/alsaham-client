@@ -58,9 +58,9 @@ const Dashboard = () => {
   const loadStatic = async () => {
     const results = await getStatistic.get(user.token);
     setData(results.data?.static[0]);
-    const o = results.data?.last1[0];
-    const s = results.data?.last7[0];
-    const m = results.data?.last30[0];
+    const o = results?.data?.last1[0];
+    const s = results?.data?.last7[0];
+    const m = results?.data?.last30[0];
     setCalcData({ oneDay: o, sevenDay: s, month: m });
     setIsLoading(false);
     setRefreshing(false);
